@@ -45,6 +45,12 @@ pod "KeepBackgroundCell"
 
 Tim Bodeit, tim@bodeit.com
 
+KeepBackgroundCell was inspired by
+[this answer](http://stackoverflow.com/a/27717607/1984384)
+by
+[Yatheesha B L](http://stackoverflow.com/users/2024072/yatheesha-b-l)
+on stackoverflow.
+
 ## License
 
 KeepBackgroundCell is available under the MIT license. See the LICENSE file for more info.
