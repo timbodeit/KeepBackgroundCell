@@ -1,0 +1,13 @@
+source 'https://github.com/CocoaPods/Specs.git'
+use_frameworks!
+
+target 'KeepBackgroundCell_Example', :exclusive => true do
+  pod "KeepBackgroundCell", :path => "../"
+end
+
+target 'KeepBackgroundCell_Tests', :exclusive => true do
+  pod "KeepBackgroundCell", :path => "../"
+
+  pod 'Specta'
+  pod 'Expecta'
+end
