@@ -1,11 +1,21 @@
 language: objective-c
 cache: cocoapods
 podfile: Example/Podfile
+matrix:
+  include:
+    # Currently causes issue with CodeSigning
+    #    - osx_image: xcode7
+    #      env: TEST_SDK=iphonesimulator9.0
+    - osx_image: xcode6.1
+      env: TEST_SDK=iphonesimulator7.0
+    - osx_image: xcode6.1
+      env: TEST_SDK=iphonesimulator8.1
 before_install:
+- xcodebuild -version -sdk
 - gem install cocoapods # Since Travis is not always on latest version
 - pod install --project-directory=Example
 install:
 - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
 script:
-- set -o pipefail && xcodebuild test -workspace Example/KeepBackgroundCell.xcworkspace -scheme KeepBackgroundCell-Example -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty -c
+- xctool -workspace Example/KeepBackgroundCell.xcworkspace -scheme KeepBackgroundCell-Example -configuration Debug test -test-sdk $TEST_SDK
 - pod lib lint --quick
