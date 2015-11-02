@@ -1,6 +1,6 @@
 # KeepBackgroundCell
 
-[![CI Status](https://travis-ci.org/timbodeit/KeepSubviewBackground.svg)](https://travis-ci.org/timbodeit/KeepBackgroundCell)
+[![CI Status](https://travis-ci.org/timbodeit/KeepBackgroundCell.svg)](https://travis-ci.org/timbodeit/KeepBackgroundCell)
 [![Version](https://img.shields.io/cocoapods/v/KeepBackgroundCell.svg?style=flat)](http://cocoapods.org/pods/KeepBackgroundCell)
 [![License](https://img.shields.io/cocoapods/l/KeepBackgroundCell.svg?style=flat)](http://cocoapods.org/pods/KeepBackgroundCell)
 [![Platform](https://img.shields.io/cocoapods/p/KeepBackgroundCell.svg?style=flat)](http://cocoapods.org/pods/KeepBackgroundCell)
