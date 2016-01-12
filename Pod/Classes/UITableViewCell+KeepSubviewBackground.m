@@ -66,22 +66,24 @@
   if (self.keepSubviewBackground) {
     // Store backgroundColors in Dictionary
     NSMutableDictionary* backgroundColorsForSubviews = [[NSMutableDictionary alloc] init];
-    for (UIView* subview in self.subviews) {
+    [self iterateSubviews:self withBlock:^(UIView *subview) {
       if (subview.backgroundColor) {
         NSValue* pointerValue = [NSValue valueWithNonretainedObject: subview];
         [backgroundColorsForSubviews setObject:subview.backgroundColor forKey:pointerValue];
       }
-    }
+    }];
+
     // Call original implementation
     [self ksb_setHighlighted:highlighted animated:animated];
+
     // Restore backgroundColors
-    for (UIView* subview in self.subviews) {
+    [self iterateSubviews:self withBlock:^(UIView *subview) {
       NSValue* pointerValue = [NSValue valueWithNonretainedObject: subview];
       UIColor* backgroundColor = [backgroundColorsForSubviews objectForKey:pointerValue];
       if (backgroundColor) {
         subview.backgroundColor = backgroundColor;
       }
-    }
+    }];
   } else {
     [self ksb_setHighlighted:highlighted animated:animated];
   }
@@ -91,24 +93,31 @@
   if (self.keepSubviewBackground) {
     // Store backgroundColors in Dictionary
     NSMutableDictionary* backgroundColorsForSubviews = [[NSMutableDictionary alloc] init];
-    for (UIView* subview in self.subviews) {
+    [self iterateSubviews:self withBlock:^(UIView *subview) {
       if (subview.backgroundColor) {
         NSValue* pointerValue = [NSValue valueWithNonretainedObject: subview];
         [backgroundColorsForSubviews setObject:subview.backgroundColor forKey:pointerValue];
       }
-    }
+    }];
     // Call original implementation
     [self ksb_setSelected:selected animated:animated];
     // Restore backgroundColors
-    for (UIView* subview in self.subviews) {
+    [self iterateSubviews:self withBlock:^(UIView *subview) {
       NSValue* pointerValue = [NSValue valueWithNonretainedObject: subview];
       UIColor* backgroundColor = [backgroundColorsForSubviews objectForKey:pointerValue];
       if (backgroundColor) {
         subview.backgroundColor = backgroundColor;
       }
-    }
+    }];
   } else {
     [self ksb_setSelected:selected animated:animated];
+  }
+}
+
+-(void)iterateSubviews:(UIView*)rootView withBlock:(void (^)(UIView* subview))block {
+  for (UIView* subview in rootView.subviews) {
+    block(subview);
+    [self iterateSubviews:subview withBlock:block];
   }
 }
 
