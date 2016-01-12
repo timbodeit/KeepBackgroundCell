@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "KeepBackgroundCell"
-  s.version          = "0.1.0"
+  s.version          = "0.2.0"
   s.summary          = "Prevent UITableViewCell from making subviews transparent on selection and highlight"
   s.description      = <<-DESC
           Whenever a UITableViewCell is selected or highlighted, it automatically sets the 
